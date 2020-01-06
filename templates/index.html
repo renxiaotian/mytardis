@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+* {
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: Arial;
+
+  background: #f1f1f1;
+}
+
+/*.row{
+  padding: 10px;
+}*/
+
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+ 
+.header h1 {
+  font-size: 50px;
+}
+ 
+/* 导航条 */
+.topnav {
+  padding: 0;
+  overflow: hidden;
+  background-color: #3399FF;
+}
+ 
+/* 导航条链接 */
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight:bold;
+}
+ 
+/* 链接颜色修改 */
+.topnav a:hover {
+  background-color: #0000FF;
+  color: white;
+}
+ 
+/* 创建两列 */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+ 
+/* 右侧栏 */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+ 
+/* 图像部分 */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 0px;
+}
+ 
+/* 文章卡片效果 */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  height: 210px;
+
+}
+.right-card{
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+.card-img {
+  padding: 10px;
+  background-color:#aaa;
+  border-radius:15px; 
+  display: inline-block;
+}
+ 
+/* 列后面清除浮动 */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card-content {
+  padding: 25px;
+  margin-left: 30px;
+  display: inline-block;
+  width: 500px;
+}
+ 
+/* 底部 */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+ 
+/* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
+@media screen and (max-width: 1180px) {
+  .card {
+    height: 400px;
+  }
+  .card-img{
+    margin-left: 55px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+ 
+/* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="margin:0px">
+
+<!-- <div class="header">
+  <h1>我的网页</h1>
+  <p>重置浏览器大小查看效果。</p>
+</div> -->
+
+<div class="topnav">
+  {%for tclass in topclass%}
+  <a href=/wiki/{{tclass.url}}>{{tclass.name}}</a>
+  {% endfor %}
+  <a href="/" style="float:right">小天的运维日志</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+<!--     <div class="card">
+      <h2>linux服务器运维</h2>
+      <h5>2019 年 4 月 17日</h5>
+      <div class="fakeimg" style="height:200px;">
+        <img src="/static/img/1121.jpg" style="height: 180px">
+      </div>
+      <p>一些文本...</p>
+      <p>菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程 - 学的不仅是技术，更是梦想！</p>
+    </div> -->
+    {%for tclass in topclass%}
+    <div class="card">
+        <div class="card-img" style="float: left;" >
+            <a href="/wiki/{{tclass.url}}" target="_blank"><img src="/static/media/{{tclass.img}}" style="height: 150px;border-radius: 10px;width: 266px;" /></a>
+        </div>
+        <div class="card-content" style="float: left;" >
+            <h3><a href="/wiki/{{tclass.url}}" target="_blank" style="text-decoration:none;">{{tclass.lang_name}}</a></h3>
+            <p>{{tclass.detail}}</p>
+        </div>
+    </div>    
+    {% endfor %}
+<!--     <div class="card">
+        <div class="card-img" style="float: left;" >
+            <a href="/wiki/python3" target="_blank"><img src="/static/img/python3.jpg" style="height: 150px;border-radius: 10px;width: 266px;" /></a>
+        </div>
+        <div class="card-content" style="float: left;" >
+            <h3><a href="/wiki/python3" target="_blank" style="text-decoration:none;">Python3教程</a></h3>
+            <p>从0开始学习python，python以其运用的广泛性，已经成为必不可少的开发工具。</p>
+        </div>
+    </div>    
+    <div class="card">
+        <div class="card-img" style="float: left;" >
+            <a href="/wiki/django3" target="_blank"><img src="/static/img/django3.jpg" style="height: 150px;border-radius: 10px;width: 266px;" /></a>
+        </div>
+        <div class="card-content" style="float: left;" >
+            <h3><a href="/wiki/django3" target="_blank" style="text-decoration:none;">django3教程</a></h3>
+            <p>django3是python的web開發框架，因為其整合了豐富的功能，拿來即用，可以用來快速開發項目，不必重複製造輪子。</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-img" style="float: left;" >
+            <a href="/wiki/devops" target="_blank"><img src="/static/img/itcenter.jpg" style="height: 150px;border-radius: 10px;width: 266px;" /></a>
+        </div>
+        <div class="card-content" style="float: left;" >
+            <h3><a href="/wiki/devops" target="_blank" style="text-decoration:none;">免费的运维开发实战课程</a></h3>
+            <p>通过django整合其他运维组件开发自动化运维平台，适当的开发技能已经成为高级运维工程师应该具有的技能。</p>
+        </div>
+    </div> -->
+
+    
+
+
+
+  </div>
+  <div class="rightcolumn">
+    <div class="right-card">
+      <h2>关于我</h2>
+<!--       <div class="fakeimg" style="height:100px;">图片</div> -->
+      <p>从事十年一线运维工作，擅长运维开发自动化，大数据运维，应用运维等领域。</p>
+      <p><a href="mailto:645478@163.com ">给我发邮件:645478@163.com</a></p>
+    </div>
+<!--     <div class="card">
+      <h3>热门文章</h3>
+      <div class="fakeimg"><p>图片</p></div>
+      <div class="fakeimg"><p>图片</p></div>
+      <div class="fakeimg"><p>图片</p></div>
+    </div> -->
+<!--     <div class="card">
+      <h3>关注我</h3>
+      <p>一些文本...</p>
+    </div> -->
+  </div>
+</div>
+
+<div class="footer">
+  <h2>域</h2>
+</div>
+
+</body>
+</html>

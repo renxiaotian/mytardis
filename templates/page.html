@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/static/css/page.css">
+
+<link rel="stylesheet" type="text/css" href="/static/css/code.css"> 
+</head>
+<body>
+
+
+
+<div class="topnav">
+  {%for tclass in topclasses%}
+  <a href="/wiki/{{tclass.url}}">{{tclass.name}}</a>
+  {% endfor %}
+  <a href="/" style="float:right">小天的运维日志</a>
+</div>
+
+<div class="row">
+  <div class="side">  
+    <ul class="side-menu">
+      {% for art in articles %}
+      <li>
+        <a href="/wiki/{{art.programa.url}}/{{art.id}}">{{art.title}}</a>
+               {% if art.id == def_art.id %}           
+                 {{ md.toc|safe }}
+                {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <div class="middle" id="art_content">
+    <h2>{{def_art.title}}</h2>
+    <div style="display: block;height: 40px;">
+      <span style=" padding-left: 50px;float: right;"> 访问量:{{def_art.read}} </span>
+      <span style=" padding-left: 50px;float: right;">创建时间:{{def_art.create_time|date:"Y-m-d"}}</span>
+    </div>
+
+    {{def_art.content|safe}}
+    
+<!--     <script type="text/javascript">
+        var divA = document.getElementById("art_content");
+        divA.innerHTML = ' {{def_art.content|safe}}'
+    </script> -->
+    <div class="pre-next-links">
+      {% if pre != '' %}
+      <div style="display: inline-block;float: left;">
+        <a href="/wiki/{{art.programa.url}}/{{pre.id}}" rel="pre"> &#60;&#60; 上一章节</a> 
+      </div>
+      {% endif %}
+      {%if net != '' %}
+      <div style="display: inline-block;float: right;">
+        <a href="/wiki/{{art.programa.url}}/{{net.id}}" rel="next"> 下一章节 &#62;&#62;</a> 
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- <div class="footer">
+  <h1>底部区域</h1>
+  <p>重置浏览器大小查看效果。</p>
+</div> -->
+
+</body>
+</html>

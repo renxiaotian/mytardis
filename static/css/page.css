@@ -1,0 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+html{
+	height: 100%;
+}
+body {
+  font-family: Arial;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+/*.footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  bottom: 0px;
+}*/
+.row{
+
+	width: 100%;
+	height: 100%;
+
+}
+/* 导航条 */
+
+.topnav {
+  overflow: hidden;
+  background-color: #3399FF;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+/* 导航链接 */
+.topnav a {
+  float: left;
+  display: block;
+  /*color: #f2f2f2;*/
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight:bold;
+
+}
+
+/* 链接 - 修改颜色 */
+.topnav a:hover {
+  background-color: #0000FF;
+  color: white;
+}
+
+/* 创建三个不相等的列 */
+/*.column {
+  
+
+
+  padding: 10px;
+}*/
+
+/* 左右两侧宽度 */
+.side {
+    padding: 60px 0px 60px 20px;
+    width: 25%;
+    position: fixed;
+    height: 100%;
+    overflow:auto;
+    border-right: 1px solid #ddd;
+    overflow:auto;
+   
+}
+
+.side-menu  {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+
+}
+.side-menu {
+  overflow-x: auto;
+  white-space:nowrap;
+
+}
+.side-menu li {
+  /*padding: 7px 0px;*/
+  border-bottom:1px solid #ddd;
+
+}
+.side-menu li a {
+  text-decoration:none;
+  color:  #000000;
+  display: block;
+  padding: 7px 0px;
+}
+.side-menu li a:link {
+  
+}
+.side-menu li a:hover {
+  background-color: #3399FF;
+}
+
+
+/* 中间区域宽度 */
+.middle {
+    background-color: white;
+    padding: 60px;
+    position: absolute;
+    right: 0;
+    width: 75%;
+    height: 100%
+    overflow:auto;
+}
+
+/* 列后面清除浮动 */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 响应式布局 - 宽度小于600px时设置上下布局 */
+@media screen and (max-width: 600px) {
+  .side, .middle {
+    width: 100%;
+    position: relative;
+  }
+}
+
+
+.toc  {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: auto;
+
+}
+/*.toc ul {
+  overflow-x: auto;
+  white-space:nowrap;
+
+}*/
+.toc li {
+  /*padding: 7px 0px;*/
+/*  display: inline-block;*/
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  list-style-type: none;
+  overflow-x: auto;
+}
+.toc li a {
+  text-decoration:none;
+  color:  #000000;
+  display: block;
+  padding: 7px 0px;
+}
+
+.toc li a:hover {
+  background-color: #3399FF;
+}
+.toc li a:visited {
+  background-color: #3399FF;
+}
+
+.pre-next-links{
+  padding:20px;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+}
+.pre-next-links a{
+  text-decoration:none;
+  display: block;
+  
+}
